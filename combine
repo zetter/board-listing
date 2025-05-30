@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
 import { Glob } from "bun";
+import { join } from "path";
 import Combiner from "./combiner";
 
 const glob = new Glob("*.json");
@@ -9,7 +10,7 @@ const directory = args[0]
 const combiner = new Combiner()
 
 for await (const file of glob.scan(directory)) {
-    const data = Bun.file(`${directory}/${file}`)
+    const data = Bun.file(join(directory, file))
     const parsedData = await data.json()
     combiner.add(parsedData)
 }
