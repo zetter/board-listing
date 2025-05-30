@@ -1,2 +1,17 @@
-#!/bin/sh
-bun run combine.ts "$@"
+#!/usr/bin/env bun
+
+import { Glob } from "bun";
+import Combiner from "./combiner";
+
+const glob = new Glob("*.json");
+const args = Bun.argv.slice(2)
+const directory = args[0]
+const combiner = new Combiner()
+
+for await (const file of glob.scan(directory)) {
+    const data = Bun.file(`${directory}/${file}`)
+    const parsedData = await data.json()
+    combiner.add(parsedData)
+}
+
+console.log(JSON.stringify(combiner.result()))
