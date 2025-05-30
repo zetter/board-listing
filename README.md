@@ -24,6 +24,11 @@ To type check:
 bun tsc
 ```
 
+To serve the json:
+
+```bash
+bun run serve
+```
 
 ### Info
 
@@ -32,3 +37,4 @@ bun tsc
 + I've added a github actions workflow to make sure it works as expected across different environments. I generated this quickly with Github Copilot.
 + I haven't considered other malformed or missing data. The JSON input is typed but this will only catch missing at the compile time, so the type check will error if the unit tests contain incorrect data, but not not if files contain missing data when running the program.
 + I've assumed trusted input - it would be possible to access JSON files outside the current directory.
++ I've created a `serve` script that will serve the JSON created by the command over HTTP. I chose to use the test JSON as the input, but this could be extended to use JSON provided in the HTTP request.
