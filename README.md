@@ -38,3 +38,12 @@ bun serve
 + I haven't considered other malformed or missing data. The JSON input is typed but this will only catch missing at the compile time, so the type check will error if the unit tests contain incorrect data, but not not if files contain missing data when running the program.
 + I've assumed trusted input to the program- it would be possible to access JSON files outside the current directory.
 + I've created a `serve.ts` script that will serve the JSON created by the command over HTTP. I chose to use the test JSON as the input, but this could be extended to use JSON provided in the HTTP request.
+
+
+### Building
+
+Bun allows you to build executable to make projects easier to distribute. You can build this project for the current platform with:
+
+```bash
+bun build ./combine.ts  --compile --outfile combine
+```
