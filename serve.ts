@@ -1,12 +1,10 @@
-#!/usr/bin/env bun
-
 import { join } from "path";
 import Combiner from "./combiner";
 
 const currentDir = import.meta.dir;
 const dataDir = join(currentDir, 'test_data', 'example_boards')
 const file_one = join(dataDir, 'boards-1.json')
-const file_two = join(dataDir, 'boards-1.json')
+const file_two = join(dataDir, 'boards-2.json')
 
 
 const fetchBoards = async (_request: Request) => {
